@@ -1,0 +1,14 @@
+{
+    "name": "Contacts",
+    "label": "Contacts",
+    "alias": "contacts",
+    "description": "manage all contacts",
+    "keywords": ["contacts"],
+    "priority": 0,
+    "providers": [
+        "Modules\\Contacts\\Providers\\ContactsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
