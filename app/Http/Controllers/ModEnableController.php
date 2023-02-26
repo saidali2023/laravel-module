@@ -13,15 +13,9 @@ class ModEnableController extends Controller
     public function modulStore(Request $request)
     {
     	$moduleblog = Module::find($request->module_name);
-        // dd('app/'.$request->module_name);
-        // if (Gate::allows('module-used',$request->module_name)){
-        //         dd('found');
-        //     }else{
-        //         dd('not found');
-        //     }   
+        $moduleNameUser='app/'.$request->module_name;
         if($request->module_status=='enable'){
-            $checkmodule = UserModule::where("name" , 'app/'.$request->module_name)->first();
-            if ($checkmodule){
+            if(Gate::allows('module-used',$moduleNameUser)){
                 return back()->with('message','the module is used');
             }else{
                 $allmodule= AllModule::where('name',$request->module_name)->first();
@@ -29,7 +23,6 @@ class ModEnableController extends Controller
                 $allmodule->save();
                 var_dump($moduleblog->disable());
             }                              
-            
         }else{
             $checki_user_module = AllModule::where("name" , $request->module_name)->first();
             if(!$checki_user_module){
@@ -42,7 +35,6 @@ class ModEnableController extends Controller
             }    
             var_dump($moduleblog->enable());
         }
-
         return back();
     }
     public function adminLogin(Request $request)

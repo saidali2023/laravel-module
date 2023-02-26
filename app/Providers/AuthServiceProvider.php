@@ -32,8 +32,8 @@ class AuthServiceProvider extends ServiceProvider
                                           where("name" , Route::current()->uri)->first();
         });
 
-        Gate::define('module-used', function($moduleNameUser) {
-            return $checkmodule = UserModule::where("name" , 'app/'.$moduleNameUser)->first();
+        Gate::define('module-used', function($user,$moduleNameUser) {
+            return $checkmodule = UserModule::where("name" , $moduleNameUser)->first();
             // return $checki_user_module = UserModule::where("user_id" , $user->id)->
             //                               where("name" , Route::current()->uri)->first();
         });
