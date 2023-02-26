@@ -15,24 +15,7 @@ use App\Models\AllModule;
 use App\Models\UserModule;
 class UserController extends Controller
 {
-    public function imageUpload()
-    {
-        return view('imageUpload');
-    }
-    public function imageUploadPost(Request $request)
-    {
-        $fileName = $request->file->getClientOriginalName();
-        $filePath = 'uploads/' . $fileName;
- 
-        $path = Storage::disk('s3')->put($filePath, file_get_contents($request->file));
-        $path = Storage::disk('s3')->url($path);
- 
-        // Perform the database operation here
- 
-        return back()
-            ->with('success','File has been successfully uploaded.');
    
-    }
 
     public function module_permissions($id)
     {
@@ -78,12 +61,6 @@ class UserController extends Controller
         return view('admin.users.add_user',compact('roles'));
     }
     
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -102,13 +79,6 @@ class UserController extends Controller
         return redirect()->route('users.index')
                         ->with('success','User created successfully');
     }
-    
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $user = User::find($id);
@@ -174,5 +144,26 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect()->route('users.index')
                         ->with('success','User deleted successfully');
+    }
+
+
+
+     public function imageUpload()
+    {
+        return view('imageUpload');
+    }
+    public function imageUploadPost(Request $request)
+    {
+        $fileName = $request->file->getClientOriginalName();
+        $filePath = 'uploads/' . $fileName;
+ 
+        $path = Storage::disk('s3')->put($filePath, file_get_contents($request->file));
+        $path = Storage::disk('s3')->url($path);
+ 
+        // Perform the database operation here
+ 
+        return back()
+            ->with('success','File has been successfully uploaded.');
+   
     }
 }

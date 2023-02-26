@@ -7,11 +7,7 @@ use Spatie\Permission\PermissionRegistrar;
 
 class CreatePermissionTables extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    
     public function up()
     {
         $tableNames = config('permission.table_names');
