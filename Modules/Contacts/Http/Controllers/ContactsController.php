@@ -6,10 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Contacts\Models\Contact;
 
+use Route;
+use Illuminate\Support\Facades\Gate;
 class ContactsController extends Controller
 {
     public function index()
     {
+        if (! Gate::allows('view-module'))
+            abort(403);
         $contacts = Contact::get();
 
         return view('contacts::index', compact('contacts'));
@@ -17,11 +21,15 @@ class ContactsController extends Controller
 
     public function create()
     {
+        if (! Gate::allows('view-module'))
+            abort(403);
         return view('contacts::create');
     }
 
     public function store(Request $request)
     {
+        if (! Gate::allows('view-module'))
+            abort(403);
         $request->validate([
             'name' => 'required|string'
         ]);
@@ -35,6 +43,8 @@ class ContactsController extends Controller
 
     public function edit($id)
     {
+        if (! Gate::allows('view-module'))
+            abort(403);
         $contact = Contact::findOrFail($id);
 
         return view('contacts::edit', compact('contact'));
@@ -42,6 +52,8 @@ class ContactsController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (! Gate::allows('view-module'))
+            abort(403);
         $request->validate([
             'name' => 'required|string'
         ]);
@@ -55,6 +67,8 @@ class ContactsController extends Controller
 
     public function destroy($id)
     {
+        if (! Gate::allows('view-module'))
+            abort(403);
         Contact::findOrFail($id)->delete();
 
         return redirect(route('app.contacts.index'));

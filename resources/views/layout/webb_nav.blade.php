@@ -157,6 +157,7 @@
                   <!-- Hello, -->
                   <span class="user-name text-bold-700">
                    
+                    {{Auth::user()->name}}
                   </span>
                 </span>
                 <span class="avatar avatar-online">
@@ -166,8 +167,8 @@
               <div class="dropdown-menu dropdown-menu-right">
                 <!-- <a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a> -->
                 
-                <a class="dropdown-item" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> تسجيل الخروج </a>
-                <form id="logout-form" action="" method="POST" class="d-none">
+                <a class="dropdown-item" href="{{ route('signoutinstructors') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> تسجيل الخروج </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                   @csrf
                 </form>
                 <!-- <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>

@@ -1,4 +1,5 @@
-<x-app-layout>
+@extends('layout.admin_main')
+@section('content') 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Add Post') }}
@@ -21,4 +22,4 @@
         </div>
     </div>
 
-</x-app-layout>
+@endsection

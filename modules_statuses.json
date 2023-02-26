@@ -1,5 +1,5 @@
 {
-    "Blog": true,
-    "Posts": false,
-    "Contacts": true
+    "Posts": true,
+    "Contacts": true,
+    "Blogs": true
 }

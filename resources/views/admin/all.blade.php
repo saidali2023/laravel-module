@@ -1,5 +1,4 @@
-
-@extends('layout.webb_main')
+@extends('layout.admin_main')
 @section('content') 
 <div class="content-header row">
         <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
@@ -63,11 +62,12 @@
                         <input type="hidden" name="module_name" class="form-control" value="{{$_item}}">
                         <center>
                           @if($_item->isEnabled())
-                            <button type="submit" class="btn btn-success mr-2 mb-1 float-center select-node" id="btn-select-node" >enable</button>
-                          @else
-                            <button type="submit" class="btn btn-success mr-2 mb-1 float-center select-node" id="btn-select-node" style="background-color: #22a0f2 !important;" >
-                                disable
+                            
+                            <button type="submit" class="btn btn-success mr-2 mb-1 float-center select-node" id="btn-select-node" style="background-color: #22a0f2 !important;" >disable
+                                
                             </button>
+                          @else
+                            <button type="submit" class="btn btn-success mr-2 mb-1 float-center select-node" id="btn-select-node" >enable</button>
                           @endif
                         
                         </center>
@@ -90,47 +90,8 @@
             
           }
         </style>
-<!-- <section class="inputmask" id="inputmask">
-            <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">all module:</h4>
-                    </div>
-                    <div class="card-content collapse show">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card mg-b-20">
-                                        <div class="card-body">
-                                            
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <ul id="treeview1">
-                  <div class="col-12 col-sm-6 text-center" >
-                    <div class="form-check">
-                      <input class="form-check-input" name="top" type="checkbox" value="1" >
-                      <label class="form-check-label" for="invalidCheck">blogs</label> 
-                    </div>
-                  </div>                           
-                                            </ul>
-                                                </div>
-                                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                                    <button type="submit" class="btn btn-main-primary">تاكيد</button>
-                                                </div>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-               
-    </section> -->
-
+<!-- 
  <section id="configuration">
           <div class="row">
             <div class="col-12">
@@ -160,8 +121,7 @@
                         <tr>
                           <th>First name</th>
                           <th>Last name</th>
-                          <!-- <th>Position</th> -->
-                          <!-- <th>Office</th> -->
+                          
                           <th>Age</th>
                           <th>Start date</th>
                           <th>Salary</th>
@@ -174,8 +134,7 @@
                         <tr>
                           <td>Tiger</td>
                           <td>Nixon</td>
-                          <!-- <td>System Architect</td> -->
-                          <!-- <td>Edinburgh</td> -->
+                          
                           <td>61</td>
                           <td>2011/04/25</td>
                           <td>$320,800</td>
@@ -192,5 +151,5 @@
             </div>
           </div>
         </section>
-     
+     --> 
 @endsection
