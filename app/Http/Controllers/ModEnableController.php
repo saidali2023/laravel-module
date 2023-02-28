@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Gate;
 class ModEnableController extends Controller
 {
     
-    public function modulStore(Request $request)
+    public function modulStoreuser(Request $request)
     {
     	$moduleblog = Module::find($request->module_name);
         $moduleNameUser='app/'.$request->module_name;
@@ -33,6 +33,17 @@ class ModEnableController extends Controller
                 $checki_user_module->status=1;
                 $checki_user_module->save();
             }    
+            var_dump($moduleblog->enable());
+        }
+        return back();
+    }
+    public function modulStore(Request $request)
+    {
+        $moduleblog = Module::find($request->module_name);
+        
+        if($request->module_status=='enable'){
+            var_dump($moduleblog->disable());                            
+        }else{
             var_dump($moduleblog->enable());
         }
         return back();
